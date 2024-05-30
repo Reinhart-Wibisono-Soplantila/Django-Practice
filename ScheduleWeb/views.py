@@ -5,7 +5,15 @@ from django.shortcuts import render
 def index(request):
     # return HttpResponse('Hello World')
     context = {
-        'judul' : 'Halaman Admin',
+        'judul' : 'Kelas Terbuka',
         'contributor' : 'Rein',
+        'subjudul' : 'Home',
+        'nav' : [
+            ['/', 'Home'],
+            ['/blog', 'Blog'],
+            ['/about', 'About'],
+            ['/dashboard', 'Dashboard'],
+            ['/contact', 'Contact'],
+        ]
     }
     return render(request, 'index.html', context)

@@ -7,7 +7,7 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>{{ judul }}</title>
+        <title>{{subjudul}} | {{judul}}</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="">
@@ -17,16 +17,16 @@
             <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
         <![endif]-->
 
-        <h1>{{judul}}</h1>
+        <h1>{{subjudul}} - {{judul}}</h1>
         <ul>
-            <li><a href="/">Home</a></li>
-            <li><a href="/dashboard">Dashboard</a></li>
-            <li><a href="/about">About</a></li>
-            <li><a href="/blog">Blog</a></li>
+            {% for link, name in nav %}
+                <li><a href="{{link}}">{{name}}</a></li>   
+            {% endfor %}
         </ul>
         
-
-        <ul></ul>
+        <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Sint deleniti magni sunt dolorem eum velit ipsa sed perspiciatis suscipit! Perferendis voluptatum ut, vel impedit excepturi corporis quaerat dolore neque ipsa!
+        </p>
         <script src="" async defer></script>
     </body>
 </html>

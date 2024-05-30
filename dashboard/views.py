@@ -4,4 +4,14 @@ from django.http import HttpResponse
 # Create your views here.
 
 def index(request):
-    return render(request, 'dashboard.html')
+    context = {
+        'judul': 'Kelas Terbuka',
+        'subjudul' : 'Dashboard',
+        'nav' : [
+            ['/', 'Home'],
+            ['/blog', 'Blog'],
+            ['/about', 'About']
+        ]
+    }
+    return render(request, 'index.html', context)
+    # return render(request, 'dashboard/index.html', context)

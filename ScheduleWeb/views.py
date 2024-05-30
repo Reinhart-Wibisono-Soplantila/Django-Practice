@@ -8,6 +8,7 @@ def index(request):
         'judul' : 'Kelas Terbuka',
         'contributor' : 'Rein',
         'subjudul' : 'Home',
+        'banner' : 'img/banner_home.png',
         'nav' : [
             ['/', 'Home'],
             ['/blog', 'Blog'],

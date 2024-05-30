@@ -4,7 +4,8 @@ from django.shortcuts import render
 # method view
 def index(request):
     # return HttpResponse('Hello World')
-    return render(request, 'index.html')
-
-def about(request):
-    return HttpResponse('abouttt')
+    context = {
+        'judul' : 'Halaman Admin',
+        'contributor' : 'Rein',
+    }
+    return render(request, 'index.html', context)

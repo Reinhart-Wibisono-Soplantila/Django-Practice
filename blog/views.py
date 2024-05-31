@@ -7,11 +7,12 @@ def index(request):
         'judul' : 'Kelas Terbuka',
         'subjudul' : 'Blog',
         'banner' : 'blog/img/banner_blog.png',
+        'app_css' : 'blog/css/style.css',
         'nav' : [
             ['/', 'Home'],
             ['/about', 'About'],
-            ['/dashboard', 'Dashboard'],
-            ['/contact', 'Contact'],
+            # ['/dashboard', 'Dashboard'],
+            # ['/contact', 'Contact'],
             ['/blog/news', 'News Blog'],
             ['/blog/recent', 'Recent Blog'],
         ]

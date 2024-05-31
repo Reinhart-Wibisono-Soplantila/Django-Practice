@@ -8,11 +8,12 @@ def index(request):
         'judul' : 'Kelas Terbuka',
         'subjudul' : 'About',
         'banner' : 'about/img/banner_about.png',
+        'app_css' : 'about/css/style.css',
         'nav' : [
             ['/', 'Home'],
             ['/blog', 'Blog'],
-            ['/dashboard', 'Dashboard'],
-            ['/contact', 'Contact'],
+            # ['/dashboard', 'Dashboard'],
+            # ['/contact', 'Contact'],
             ['/blog/news', 'News Blog'],
             ['/blog/recent', 'Recent Blog'],
         ]

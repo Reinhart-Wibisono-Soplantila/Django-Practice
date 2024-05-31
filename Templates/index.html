@@ -11,20 +11,22 @@
         <title>{{subjudul}} | {{judul}}</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="">
+        <link rel="stylesheet" href="{% static 'css/style.css'%}">
+        <link rel="stylesheet" href="{% static app_css %}">
     </head>
     <body>
         <!--[if lt IE 7]>
             <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
         <![endif]-->
-        <img style="width: 100%;" src="{% static banner %}" alt="">
+        <img id="banner" src="{% static banner %}" alt="">
+        <nav>
+            <ul>
+                {% for link, name in nav %}
+                    <li><a href="{{link}}">{{name}}</a></li>   
+                {% endfor %}
+            </ul>
+        </nav>
         <h1>{{subjudul}} - {{judul}}</h1>
-        <ul>
-            {% for link, name in nav %}
-                <li><a href="{{link}}">{{name}}</a></li>   
-            {% endfor %}
-        </ul>
-        
         <p>
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Sint deleniti magni sunt dolorem eum velit ipsa sed perspiciatis suscipit! Perferendis voluptatum ut, vel impedit excepturi corporis quaerat dolore neque ipsa!
         </p>

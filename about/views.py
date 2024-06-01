@@ -5,18 +5,19 @@ from django.http import HttpResponse
 
 def index(request):
     context = {
-        'judul' : 'Kelas Terbuka',
-        'subjudul' : 'About',
-        'banner' : 'about/img/banner_about.png',
-        'app_css' : 'about/css/style.css',
-        'nav' : [
-            ['/', 'Home'],
-            ['/blog', 'Blog'],
-            # ['/dashboard', 'Dashboard'],
-            # ['/contact', 'Contact'],
-            ['/blog/news', 'News Blog'],
-            ['/blog/recent', 'Recent Blog'],
-        ]
+        'title' : 'About',
+        'heading' : 'About',
+        'subheading' : 'Tentang Kelas Terbuka',
+        # 'banner' : 'about/img/banner_about.png',
+        # 'app_css' : 'about/css/style.css',
+        # 'nav' : [
+        #     ['/', 'Home'],
+        #     ['/blog', 'Blog'],
+        #     # ['/dashboard', 'Dashboard'],
+        #     # ['/contact', 'Contact'],
+        #     ['/blog/news', 'News Blog'],
+        #     ['/blog/recent', 'Recent Blog'],
+        # ]
     }
     # return render(request, 'about/index.html', context)
-    return render(request, 'index.html', context)
+    return render(request, 'about/index.html', context)

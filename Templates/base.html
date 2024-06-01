@@ -1,0 +1,45 @@
+{% load static%}
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]>      <html class="no-js"> <!--<![endif]-->
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>{{title}}</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        {% include "snippets/styles.html" %}
+        {% block app_css %}  
+            <link rel="stylesheet" href="{% static 'css/style.css'%}">
+        {% endblock app_css %}
+    </head>
+    <body>
+        {% include "snippets/navbar.html" %}
+
+        <div class="container-fluid jumbotron">
+            <div class="p-5 mb-4 rounded-3">
+                <div class="container-fluid py-5 text-white text-center">
+                    {% block header %}{% endblock header %}
+                </div>
+            </div>
+        </div>
+        <div class="container-fluid">
+            <div class="container bg-white text-dark shadow" style="margin-top: -50px;" id="myBody">
+                {% block content-1 %}{% endblock content-1 %}
+            </div>
+
+            <div class="container bg-dark text-white shadow">
+                {% block content-2 %}
+                {% comment %} <div class="row" style="height: 300px;">
+                    <h1>Content 2</h1>
+                </div> {% endcomment %}
+                {% endblock content-2 %}
+            </div>
+        </div>
+        
+        {% include "snippets/scripts.html" %}
+    </body>
+</html>

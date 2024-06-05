@@ -1,4 +1,5 @@
 from django.db import models
+from django.utils import timezone
 
 # Create your models here.
 
@@ -8,7 +9,8 @@ class post(models.Model):
     # option waktu auto_now_add dan fieldnya DateTimeField
     title = models.CharField(max_length=255)
     body = models.TextField()
-    email = models.EmailField(default='namaweb.com')
+    category =  models.CharField(max_length=255)
+    waktuPosting = models.DateTimeField(auto_now_add=True)
     
     def __str__(self):
-        return"{}".format(self.title)
+        return"{}. {}".format(self.id, self.title)

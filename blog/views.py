@@ -1,13 +1,17 @@
 from django.shortcuts import render
 from django.http import HttpResponse
+from .models import post
 
 # Create your views here.
 def index(request):
+    
+    posts = post.objects.all()
+    print(posts)
     context = {
         'title' : 'Blog',
         'heading' : 'Blog',
         'subheading' : 'Jurnal Kelas Terbuka',
-        
+        'posts' : posts,
         # 'banner' : 'blog/img/banner_blog.png',
         # 'app_css' : 'blog/css/style.css',
         # 'nav' : [

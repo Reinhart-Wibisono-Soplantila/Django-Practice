@@ -11,9 +11,12 @@
 {% endblock header %}
 
 {% block content-1 %}
-<div class="row" style="height: 400px;">
-    <h1>content blog 1</h1>
-</div>
+    {% for post in posts  %}
+    <div class="row" style="height: 400px;">
+        <h1>{{post.title}}</h1>
+        <p>{{post.body}}</p>
+    </div>
+    {% endfor %}
 {% endblock content-1 %}
 
 {% block content-2 %}

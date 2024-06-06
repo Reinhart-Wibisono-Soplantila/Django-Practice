@@ -26,18 +26,20 @@
                 </div>
             </div>
         </div>
-        <div class="container-fluid">
-            <div class="container bg-white text-dark shadow" style="margin-top: -50px;" id="myBody">
-                {% block content-1 %}{% endblock content-1 %}
-            </div>
+        <div class="container-fluid bg-dark">
+            {% block content %}
+              
+            {% endblock content %}
+            <!-- <div class="container bg-white text-dark shadow" style="margin-top: -50px;" id="myBody">
+            </div> -->
 
-            <div class="container bg-dark text-white shadow">
+            <!-- <div class="container bg-dark text-white shadow">
                 {% block content-2 %}
                 {% comment %} <div class="row" style="height: 300px;">
                     <h1>Content 2</h1>
                 </div> {% endcomment %}
                 {% endblock content-2 %}
-            </div>
+            </div> -->
         </div>
         
         {% include "snippets/scripts.html" %}

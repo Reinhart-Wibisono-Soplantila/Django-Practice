@@ -37,6 +37,7 @@ def jurnal(request):
         'Category' : 'Jurnal',
         'posts' : posts,
     }
+    print(posts)
     return render(request, 'blog/index.html', context)
 
 def berita(request):
@@ -62,3 +63,28 @@ def gosip(request):
         'posts' : posts,
     }
     return render(request, 'blog/index.html', context)
+
+def filter(request, categoryInput):
+    posts = post.objects.filter(category=categoryInput)
+    context = {
+        'title' : 'Blog',
+        'heading' : 'Blog',
+        'subheading' : 'Jurnal Kelas Terbuka',
+        'Category' : 'Gosip',
+        'posts' : posts,
+    }
+    return render(request, 'blog/index.html', context)
+
+# slug itu unik sehingga hanya ada satu atau memakai get
+# masalah adalah tidak bisa dilakukan for karena object melalui get adlaah noniterable
+def singlePost(request, slugInput):
+    posts = post.objects.get(slug=slugInput)
+    context = {
+        'title' : 'Blog',
+        'heading' : 'Blog',
+        'subheading' : 'Jurnal Kelas Terbuka',
+        'Category' : 'Gosip',
+        'posts' : posts,
+    }
+    # return HttpResponse(posts.title)
+    return render(request, 'blog/singlePost.html', context)

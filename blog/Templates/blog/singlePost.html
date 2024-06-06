@@ -11,36 +11,34 @@
 {% endblock header %}
 
 {% block content %}
-    {% for post in posts %}
     <div class="modal position-static d-block" tabindex="-1">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header d-flex justify-content-between align-items-center">
-                    <h5 class="modal-title">{{post.title}}</h5>
-                    <p class="m-auto me-0">{{post.category}}</p>
+                    <h5 class="modal-title">{{posts.title}}</h5>
+                    <p class="m-auto me-0">{{posts.category}}</p>
                 </div>
                 <div class="modal-body">
-                    <p>{{post.waktuPosting}}</p>
-                    <p>{{post.body}}</p>
-                    <p>slug{{post.slug}}</p>
+                    <p>{{posts.waktuPosting}}</p>
+                    <p>{{posts.body}}</p>
+                    <p>slug {{posts.slug}}</p>
                     <p></p>
                 </div>
             </div>
         </div>
     </div>
-    {% endfor %}
 {% endblock content %}
 
-{% comment %} {% block content %}
+<!-- {% comment %} {% block content %}
     {% for post in posts  %}
     <div class="row" style="height: 400px;">
         <h1>{{post.title}}</h1>
     </div>
     {% endfor %}
-{% endblock content %} {% endcomment %}
+{% endblock content %} {% endcomment %} -->
 
-{% block content-2 %}
+<!-- {% block content-2 %}
 <div class="row" style="height: 400px;">
     <h1>content blog 2</h1>
 </div>
-{% endblock content-2 %}
+{% endblock content-2 %} -->

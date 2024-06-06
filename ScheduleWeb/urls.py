@@ -24,5 +24,9 @@ urlpatterns = [
     path('', views.index),
     path('blog/', include('blog.urls')),
     path('dashboard/', include('dashboard.urls')),
-    path('about/', include('about.urls'))
+    path('about/', include('about.urls')),
+    path('<int:input>/', views.angka),
+    path('angka/<int:input>/', views.angka),
+    path('<int:tahun>/<int:bulan>/<int:hari>', views.tanggal),
+    path('page/<str:page>/', views.link)
 ]

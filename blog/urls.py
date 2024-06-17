@@ -6,6 +6,7 @@ urlpatterns = [
     # path('jurnal/', views.jurnal),
     # path('berita/', views.berita),
     # path('gosip/', views.gosip),
-    path('<str:categoryInput>/', views.filter),
-    path('post/<str:slugInput>/', views.singlePost)
+    # path('<str:categoryInput>/', views.filter),
+    path('category/<str:categoryInput>/', views.categoryPost),
+    path('post/<str:slugInput>/', views.detailPost)
 ]

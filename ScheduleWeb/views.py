@@ -13,9 +13,9 @@ def index(request):
             ['/', 'Home'],
             ['/blog', 'Blog'],
             ['/about', 'About'],
-            # ['/dashboard', 'Dashboard'],
+            ['/admin', 'Admin'],
             # ['/contact', 'Contact'],
-        ]
+        ],
     }
     return render(request, 'index.html', context)
 

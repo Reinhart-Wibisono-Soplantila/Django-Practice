@@ -10,7 +10,8 @@ class post(models.Model):
     title = models.CharField(max_length=255)
     body = models.TextField()
     category =  models.CharField(max_length=255)
-    waktuPosting = models.DateTimeField(auto_now_add=True)
+    publish = models.DateTimeField(auto_now_add=True)
+    update = models.DateTimeField(auto_now_add=True)
     slug = models.SlugField(blank=True, editable=False)
     
     def save(self):

@@ -27,64 +27,79 @@ def index(request):
     return render(request, 'blog/index.html', context)
     # return render(request, 'blog/index.html', context)
 
-def jurnal(request):
-    posts = post.objects.filter(category = 'jurnal')
-    print(posts)
-    context = {
-        'title' : 'Blog',
-        'heading' : 'Blog',
-        'subheading' : 'Jurnal Kelas Terbuka',
-        'Category' : 'Jurnal',
-        'posts' : posts,
-    }
-    print(posts)
-    return render(request, 'blog/index.html', context)
-
-def berita(request):
-    posts = post.objects.filter(category = 'berita')
-    print(posts)
-    context = {
-        'title' : 'Blog',
-        'heading' : 'Blog',
-        'subheading' : 'Jurnal Kelas Terbuka',
-        'Category' : 'Berita',
-        'posts' : posts,
-    }
-    return render(request, 'blog/index.html', context)
-
-def gosip(request):
-    posts = post.objects.filter(category = 'gosip')
-    print(posts)
-    context = {
-        'title' : 'Blog',
-        'heading' : 'Blog',
-        'subheading' : 'Jurnal Kelas Terbuka',
-        'Category' : 'Gosip',
-        'posts' : posts,
-    }
-    return render(request, 'blog/index.html', context)
-
-def filter(request, categoryInput):
+def categoryPost(request, categoryInput):
     posts = post.objects.filter(category=categoryInput)
+    categories = post.objects.values('category').distinct()
+    print(categories)
     context = {
         'title' : 'Blog',
         'heading' : 'Blog',
         'subheading' : 'Jurnal Kelas Terbuka',
-        'Category' : 'Gosip',
+        'categories' : categories,
         'posts' : posts,
     }
-    return render(request, 'blog/index.html', context)
+    # return HttpResponse(posts.title)
+    return render(request, 'blog/categoryPost.html', context)
 
 # slug itu unik sehingga hanya ada satu atau memakai get
 # masalah adalah tidak bisa dilakukan for karena object melalui get adlaah noniterable
-def singlePost(request, slugInput):
-    posts = post.objects.get(slug=slugInput)
+def detailPost(request, slugInput):
+    posts = post.objects.get(slug=slugInput) #queryset
     context = {
         'title' : 'Blog',
         'heading' : 'Blog',
         'subheading' : 'Jurnal Kelas Terbuka',
-        'Category' : 'Gosip',
         'posts' : posts,
     }
     # return HttpResponse(posts.title)
     return render(request, 'blog/singlePost.html', context)
+
+
+
+# def jurnal(request):
+#     posts = post.objects.filter(category = 'jurnal')
+#     print(posts)
+#     context = {
+#         'title' : 'Blog',
+#         'heading' : 'Blog',
+#         'subheading' : 'Jurnal Kelas Terbuka',
+#         'Category' : 'Jurnal',
+#         'posts' : posts,
+#     }
+#     print(posts)
+#     return render(request, 'blog/index.html', context)
+
+# def berita(request):
+#     posts = post.objects.filter(category = 'berita')
+#     print(posts)
+#     context = {
+#         'title' : 'Blog',
+#         'heading' : 'Blog',
+#         'subheading' : 'Jurnal Kelas Terbuka',
+#         'Category' : 'Berita',
+#         'posts' : posts,
+#     }
+#     return render(request, 'blog/index.html', context)
+
+# def gosip(request):
+#     posts = post.objects.filter(category = 'gosip')
+#     print(posts)
+#     context = {
+#         'title' : 'Blog',
+#         'heading' : 'Blog',
+#         'subheading' : 'Jurnal Kelas Terbuka',
+#         'Category' : 'Gosip',
+#         'posts' : posts,
+#     }
+#     return render(request, 'blog/index.html', context)
+
+# def filter(request, categoryInput):
+#     posts = post.objects.filter(category=categoryInput)
+#     context = {
+#         'title' : 'Blog',
+#         'heading' : 'Blog',
+#         'subheading' : 'Jurnal Kelas Terbuka',
+#         'Category' : 'Gosip',
+#         'posts' : posts,
+#     }
+#     return render(request, 'blog/index.html', context)

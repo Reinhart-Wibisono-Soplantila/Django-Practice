@@ -10,6 +10,26 @@
 <p class="col fs-4 lead text-start">{{subheading}}</p>
 {% endblock header %}
 
+{% block custom_content %}
+<div class="modal position-static d-block" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <ul class="nav">
+                <li class="nav-item  mx-auto">
+                    <a class="nav-list" href="/blog">All-Post</a>
+                </li>
+                {% for datacategory in categories %}
+                <li class="nav-item  mx-auto">
+                    <a href="/blog/category/{{datacategory.category}}">{{datacategory.category}}</a>
+                </li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+</div>
+
+{% endblock custom_content %}
+
 {% block content %}
     {% for post in posts %}
     <div class="modal position-static d-block" tabindex="-1">

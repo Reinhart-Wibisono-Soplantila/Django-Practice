@@ -6,10 +6,17 @@
     <title>Document</title>
 </head>
 <body>
-    <form action="">
+    <form action="" method="post">
+        {% csrf_token %}
         <label for="nama">Nama: </label>
         <input type="text" name="nama" id="nama">
-
+        <br>
+        <label for="alamat">alamat</label>
+        <input type="text" name="alamat" id="alamat">
+        <button type="submit">Kirim</button>
     </form>
+
+    <p>nama: {{nama}}</p>
+    <p>alamat: {{alamat}}</p>
 </body>
 </html>

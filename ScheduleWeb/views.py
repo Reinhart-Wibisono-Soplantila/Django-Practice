@@ -19,6 +19,14 @@ def index(request):
     }
     return render(request, 'index.html', context)
 
+# def form(request):
+#     context = {'title' : 'form'}
+    
+#     if request.method == 'POST':
+#         print('ini adlaah method post')
+#         context['nama'] = request.POST['nama']
+#         context['alamat'] = request.POST['alamat']
+
 def angka(request, input):
     heading = "<h1> ANGKA </h1>"
     stri = heading + str(input)

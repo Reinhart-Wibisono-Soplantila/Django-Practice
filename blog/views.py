@@ -6,12 +6,12 @@ from .models import post
 def index(request):
     
     posts = post.objects.all()
-    print(posts)
+    categories = post.objects.values('category').distinct()
     context = {
         'title' : 'Blog',
         'heading' : 'Blog',
         'subheading' : 'Jurnal Kelas Terbuka',
-        'Category' : 'All',
+        'categories' : categories,
         'posts' : posts,
         # 'banner' : 'blog/img/banner_blog.png',
         # 'app_css' : 'blog/css/style.css',
@@ -30,7 +30,6 @@ def index(request):
 def categoryPost(request, categoryInput):
     posts = post.objects.filter(category=categoryInput)
     categories = post.objects.values('category').distinct()
-    print(categories)
     context = {
         'title' : 'Blog',
         'heading' : 'Blog',

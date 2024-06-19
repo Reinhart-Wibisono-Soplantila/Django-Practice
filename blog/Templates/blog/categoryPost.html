@@ -20,14 +20,13 @@
                 </li>
                 {% for datacategory in categories %}
                 <li class="nav-item  mx-auto">
-                    <a href="/blog/category/{{datacategory.category}}">{{datacategory.category}}</a>
+                    <a href="{% url 'blog:category' categoryInput=datacategory.category %}">{{datacategory.category}}</a>
                 </li>
                 {% endfor %}
             </ul>
         </div>
     </div>
 </div>
-
 {% endblock custom_content %}
 
 {% block content %}
@@ -36,7 +35,7 @@
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header d-flex justify-content-between align-items-center">
-                    <a href="/blog/post/{{post.slug}}">
+                    <a href="{% url 'blog:detail' slugInput=post.slug %}">
                         <h5 class="modal-title">{{post.title}}</h5>
                     </a>
                     <p class="m-auto me-0">{{post.category}}</p>

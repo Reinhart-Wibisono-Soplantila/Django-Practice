@@ -1,9 +1,13 @@
 from django.http import HttpResponse
 from django.shortcuts import render
+from django import forms
+
+class ContactForm(forms.Form):
+    nama = forms.CharField()
+    alamat = forms.CharField()
 
 # method view
 def index(request):
-    # return HttpResponse('Hello World')
     context = {
         'title' : 'Kelas Terbuka',
         'heading' : 'Selamat Datang',
@@ -19,9 +23,27 @@ def index(request):
     }
     return render(request, 'index.html', context)
 
-def form(request):
-    context = {'title' : 'form'}
+def form2(request):
     
+    context = {
+        'title' : 'form Biasa',
+        }
+    if request.method == 'POST':
+        print('ini adalah method post')
+        context['nama'] = request.POST['nama']
+        context['alamat'] = request.POST['alamat']
+    else:
+        print('Ini adalah method get')
+        
+    print(request.POST)
+    return render(request, 'form2.html', context)
+
+def form1(request):
+    contact_form = ContactForm()
+    context = {
+        'title' : 'Class form',
+        'contact_form' : contact_form
+        }
     if request.method == 'POST':
         print('ini adalah method post')
         context['nama'] = request.POST['nama']
@@ -29,7 +51,8 @@ def form(request):
     else:
         print('Ini adalah method get')
     
-    return render(request, 'form.html', context)
+    # print(request.POST)
+    return render(request, 'form1.html', context)
 
 def angka(request, input):
     heading = "<h1> ANGKA </h1>"

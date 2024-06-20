@@ -20,6 +20,7 @@ from django.urls import path, include
 from . import views
 
 urlpatterns = [
+    # URL Dynamic
     # path('<int:tahun>/<int:bulan>/<int:hari>', views.tanggal),
     # path('<int:input>/', views.angka),
     # path('page/<str:page>/', views.link), #slug
@@ -31,6 +32,7 @@ urlpatterns = [
     path('blog/', include('blog.urls', namespace='blog')),
     path('about/', include('about.urls', namespace='about')),
     path('', views.index, name='index'),
-    path('form/', views.form, name='form'),
+    path('form1/', views.form1, name='form1'),
+    path('form2/', views.form2, name='form2'),
     path('admin/', admin.site.urls),
 ]

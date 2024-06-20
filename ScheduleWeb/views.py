@@ -2,9 +2,11 @@ from django.http import HttpResponse
 from django.shortcuts import render
 from django import forms
 
-class ContactForm(forms.Form):
-    nama = forms.CharField()
-    alamat = forms.CharField()
+# penulisan import dari file lokal bisa dilakukan dengan dua cara 
+# 1. berarti nulis forms.namaclassnya
+from . import forms
+# 2. langsung nama kelasnya
+from .forms import ContactForm
 
 # method view
 def index(request):

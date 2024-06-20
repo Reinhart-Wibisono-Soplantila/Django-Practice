@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Form1</title>
 </head>
 <body>
     <!-- <h5>form biasa</h5>
@@ -22,7 +22,10 @@
      <h5>class form</h5>
      <form action="" method="post">
         {% csrf_token %}
-        {{contact_form}}
+        <!-- menggunakan table agar sedikit lebih rapi -->
+        <table>
+            {{contact_form}}
+        </table>
         <button type="submit">Kirim</button>
      </form>
     <p>nama: {{nama}}</p>

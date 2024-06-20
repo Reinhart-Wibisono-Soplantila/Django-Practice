@@ -8,10 +8,20 @@ class ContactForms(forms.Form):
     )
     
     Jenis_Kelamin = forms.ChoiceField(
-        # widget=forms.RadioSelect,
-        choices=Gender)
+        widget=forms.RadioSelect,
+        choices=Gender
+        )
+    Tahun = range(1990, 2030, 1)
+    tanggal_lahir = forms.DateField(
+        # memakai years untuk mengedit tahun
+        widget=forms.SelectDateWidget(years = Tahun),
+    )
     Email = forms.EmailField(label='Alamat Email')
-    Alamat = forms.CharField(label='Alamat')
+    Alamat = forms.CharField(
+        max_length=100,
+        label='Alamat',
+        widget=forms.Textarea,
+        )
     Kode_Pos = forms.IntegerField(label='Kode Pos')
     Kota = forms.CharField(label='Kota')
     Provinsi = forms.CharField(label='Provinsi', required=False)

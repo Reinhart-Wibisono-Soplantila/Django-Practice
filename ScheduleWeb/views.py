@@ -7,6 +7,7 @@ from django import forms
 from . import forms
 # 2. langsung nama kelasnya
 from .forms import ContactForm
+from .forms_contact import ContactForms
 
 # method view
 def index(request):
@@ -25,11 +26,23 @@ def index(request):
     }
     return render(request, 'index.html', context)
 
+def contact(reqeust):
+    contact_form = ContactForms()
+    context ={
+        'Title' : 'Contact',
+        'Contact_Form' : contact_form
+    }
+    # Derbugging
+    print(reqeust.POST)
+    return render(reqeust, 'contact.html', context)
+
 def form2(request):
     
     context = {
         'title' : 'form Biasa',
         }
+    
+    # Debugging
     if request.method == 'POST':
         print('ini adalah method post')
         context['nama'] = request.POST['nama']

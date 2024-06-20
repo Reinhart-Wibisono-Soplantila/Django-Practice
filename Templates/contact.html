@@ -3,28 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Form1</title>
+    <title>Contact</title>
 </head>
 <body>
-    <!-- <h5>form biasa</h5>
-    <form action="" method="post">
-        {% csrf_token %}
-        <label for="nama">Nama: </label>
-        <input type="text" name="nama" id="nama">
-        <br>
-        <label for="alamat">alamat</label>
-        <input type="text" name="alamat" id="alamat">
-        <button type="submit">Kirim</button>
-    </form> -->
-
-
     <!-- class form -->
-     <h5>class form</h5>
+     <h3>{{Title}}</h3>
      <form action="" method="post">
         {% csrf_token %}
         <!-- menggunakan table agar sedikit lebih rapi -->
         <table>
-            {{contact_form.as_table}}
+            {{Contact_Form}}
         </table>
         <button type="submit">Kirim</button>
      </form>

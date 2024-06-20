@@ -1,0 +1,85 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+<div class="modal position-static d-block" tabindex="-1">
+    <div class="modal-dialog w-75 mw-100">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Form</h5>
+                <!-- <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button> -->
+            </div>
+            <div class="modal-body">
+                <!-- class form -->
+                <form action="" method="post">
+                    {% csrf_token %}
+                    <div class="form-group">
+                        {{Contact_Form.Nama_Lengkap.label_tag}}
+                        {{Contact_Form.Nama_Lengkap}}
+                    </div>
+                    <br>
+                    <div class="form-group">
+                        {{Contact_Form.Jenis_Kelamin.label_tag}}
+                        {% for component in Contact_Form.Jenis_Kelamin %}
+                          <div class="form-check">
+                            {{component.tag}}
+                            <label for="{{component.id_for_label}}">
+                                {{component.choice_label}}
+                            </label>
+                          </div>
+                        {% endfor %}
+                    </div>
+                    <br>
+                    <div class="form-group row ">
+                        {{Contact_Form.tanggal_lahir.label_tag}}
+                        <div class="d-flex col-7">
+                            {{Contact_Form.tanggal_lahir}}
+                        </div>
+                    </div>
+                    <br>
+                    <div class="form-group">
+                        {{Contact_Form.Email.label_tag}}
+                        {{Contact_Form.Email}}
+                    </div>
+                    <br>
+                    <div class="form-group">
+                        {{Contact_Form.Alamat.label_tag}}
+                        {{Contact_Form.Alamat}}
+                    </div>
+                    <br>
+                    <div class="form-group">
+                        <div class="form-check">
+                            {{Contact_Form.Agree}}
+                            <label for="{{Contact_Form.Agree.id_for_label}}" class="">
+                                {{Contact_Form.Agree.label}}
+                            </label>
+                        </div>
+                    </div>
+                    <br>
+                    <br>
+                    <div class="modal-footer">
+                        <!-- <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button> -->
+                        <button type="Submit" class="btn btn-primary">Save</button>
+                    </div>
+                </form>
+            </div>
+            
+        </div>
+    </div>
+</div>
+
+<div class="modal position-static d-block" tabindex="-1">
+    <div class="modal-dialog w-75 mw-100">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Result</h5>
+                <!-- <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button> -->
+            </div>
+            <div class="modal-body">
+                <p>nama: {{nama}}</p>
+                <p>alamat: {{alamat}}</p>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock content %}

@@ -26,14 +26,13 @@ urlpatterns = [
     # path('page/<str:page>/', views.link), #slug
     # path('angka/<int:input>/', views.angka),
     
+    
     # namespacing memakai namespace dari url utama ke include atau app lain
     # name untuk alias
     path('dashboard/', include('dashboard.urls', namespace='dashboard')),
     path('blog/', include('blog.urls', namespace='blog')),
     path('about/', include('about.urls', namespace='about')),
+    path('contact/', include('contact.urls',namespace='contact')),
     path('', views.index, name='index'),
-    path('form1/', views.form1, name='form1'),
-    path('form2/', views.form2, name='form2'),
-    path('contact/', views.contact, name='contact'),
     path('admin/', admin.site.urls),
 ]

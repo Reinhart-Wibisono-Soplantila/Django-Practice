@@ -1,13 +1,5 @@
 from django.http import HttpResponse
 from django.shortcuts import render
-from django import forms
-
-# penulisan import dari file lokal bisa dilakukan dengan dua cara 
-# 1. berarti nulis forms.namaclassnya
-from . import forms
-# 2. langsung nama kelasnya
-from .forms import ContactForm
-from .forms_contact import ContactForms
 
 # method view
 def index(request):
@@ -25,49 +17,6 @@ def index(request):
         ],
     }
     return render(request, 'index.html', context)
-
-def contact(reqeust):
-    contact_form = ContactForms()
-    context ={
-        'Title' : 'Contact',
-        'Contact_Form' : contact_form
-    }
-    # Derbugging
-    print(reqeust.POST)
-    return render(reqeust, 'contact.html', context)
-
-def form2(request):
-    
-    context = {
-        'title' : 'form Biasa',
-        }
-    
-    # Debugging
-    if request.method == 'POST':
-        print('ini adalah method post')
-        context['nama'] = request.POST['nama']
-        context['alamat'] = request.POST['alamat']
-    else:
-        print('Ini adalah method get')
-        
-    print(request.POST)
-    return render(request, 'form2.html', context)
-
-def form1(request):
-    contact_form = ContactForm()
-    context = {
-        'title' : 'Class form',
-        'contact_form' : contact_form
-        }
-    if request.method == 'POST':
-        print('ini adalah method post')
-        context['nama'] = request.POST['nama']
-        context['alamat'] = request.POST['alamat']
-    else:
-        print('Ini adalah method get')
-    
-    # print(request.POST)
-    return render(request, 'form1.html', context)
 
 def angka(request, input):
     heading = "<h1> ANGKA </h1>"

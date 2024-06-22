@@ -7,7 +7,7 @@ gender = (
 
 # Create your models here.
 class contactModel(models.Model):
-    Nama_Lengkap=models.CharField(
+    NamaLengkap=models.CharField(
         max_length=20,
         )
     
@@ -30,4 +30,4 @@ class contactModel(models.Model):
     Publised = models.DateTimeField(auto_now_add=True)
     Updated = models.DateTimeField(auto_now=True)
     def __str__(self):
-        return "{}. {}".format(self.id, self.Nama_Lengkap)
+        return "{}. {}".format(self.id, self.NamaLengkap)

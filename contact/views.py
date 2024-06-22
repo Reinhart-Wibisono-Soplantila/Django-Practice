@@ -24,26 +24,32 @@ def index(request):
     return render(request, 'contact/index.html', context)
 
 def create(request):
-    contact_form = ContactForms()
+    contact_form = ContactForms(request.POST or None)
+    error = None
+    if request.method == 'POST':
+        if contact_form.is_valid():
+            contactModel.objects.create(
+                NamaLengkap = contact_form.cleaned_data.POST['NamaLengkap'],
+                # tanggal_lahir = request.POST['tanggal_lahir'],
+                Jenis_Kelamin = contact_form.cleaned_data.POST['Jenis_Kelamin'],
+                Email = contact_form.cleaned_data.POST['Email'],
+                Alamat = contact_form.cleaned_data.POST['Alamat'],
+                # Agree = request.POST['Agree'],
+                # Kode_Pos = request.POST['Kode_Pos'],
+                # Kota = request.POST['Kota'],
+                # Provinsi = request.POST['Provinsi'],
+            )
+            return HttpResponseRedirect('/contact/')
+        else:
+            error = contact_form.errors
+            
     context ={
         'title' : 'Contact',
         'heading' : 'Contact',
         'subheading' : 'Jurnal Kelas Terbuka',
-        'Contact_Form' : contact_form
+        'Contact_Form' : contact_form,
+        'error' : error
     }
-    if request.method == 'POST':
-        contactModel.objects.create(
-            Nama_Lengkap = request.POST['Nama_Lengkap'],
-            # tanggal_lahir = request.POST['tanggal_lahir'],
-            Jenis_Kelamin = request.POST['Jenis_Kelamin'],
-            Email = request.POST['Email'],
-            Alamat = request.POST['Alamat'],
-            # Agree = request.POST['Agree'],
-            # Kode_Pos = request.POST['Kode_Pos'],
-            # Kota = request.POST['Kota'],
-            # Provinsi = request.POST['Provinsi'],
-        )
-        return HttpResponseRedirect('/contact/')
     # Derbugging
     print(request.POST)
     return render(request, 'contact/form.html', context)

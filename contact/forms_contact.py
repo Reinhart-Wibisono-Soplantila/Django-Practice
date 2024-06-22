@@ -1,7 +1,7 @@
 from django import forms
 
 class ContactForms(forms.Form):
-    Nama_Lengkap=forms.CharField(
+    NamaLengkap=forms.CharField(
         label='Nama Lengkap', 
         max_length=20,
         widget=forms.TextInput(
@@ -11,6 +11,13 @@ class ContactForms(forms.Form):
             }
             )
         )
+    def clean_NamaLengkap(self):
+        NamaLengkap_input = self.cleaned_data.get('NamaLengkap')
+        if NamaLengkap_input == 'Hello World':
+            raise forms.ValidationError("Hellow World Not Allowed")
+        # print(NamaLengkap_input)
+        return NamaLengkap_input
+    
     
     Jenis_Kelamin = forms.ChoiceField(
         widget=forms.RadioSelect(
@@ -64,7 +71,7 @@ class ContactForms(forms.Form):
         )
     )
     
-    Kode_Pos = forms.IntegerField(label='Kode Pos')
-    Kota = forms.CharField(label='Kota')
-    Provinsi = forms.CharField(label='Provinsi', required=False)
+    # Kode_Pos = forms.IntegerField(label='Kode Pos')
+    # Kota = forms.CharField(label='Kota')
+    # Provinsi = forms.CharField(label='Provinsi', required=False)
    

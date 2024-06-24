@@ -1,17 +1,11 @@
 from django.db import models
-from django.core.exceptions import ValidationError
-
-# def validate_NamaLengkap(value):
-#     NamaLengkap_input = value
-#     if NamaLengkap_input == 'Einstein':
-#         message = "maaf," + NamaLengkap_input + "Tidak bisa di posting"
-#         raise ValidationError(message)
+from .validators import validate_NamaLengkap
 
 # Create your models here.
 class contactModel(models.Model):
     NamaLengkap=models.CharField(
         max_length=20,
-        # validators=[validate_NamaLengkap]
+        validators=[validate_NamaLengkap]
         )
     
     

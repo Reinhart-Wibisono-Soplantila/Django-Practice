@@ -29,15 +29,26 @@ def create(request):
     if request.method == 'POST':
         if contact_form.is_valid():
             contactModel.objects.create(
-                NamaLengkap = contact_form.cleaned_data.POST['NamaLengkap'],
-                # tanggal_lahir = request.POST['tanggal_lahir'],
-                Jenis_Kelamin = contact_form.cleaned_data.POST['Jenis_Kelamin'],
-                Email = contact_form.cleaned_data.POST['Email'],
-                Alamat = contact_form.cleaned_data.POST['Alamat'],
+                # Cara satu melakukan save
+                # NamaLengkap = contact_form.cleaned_data.POST['NamaLengkap'],
+                # # tanggal_lahir = request.POST['tanggal_lahir'],
+                # Jenis_Kelamin = contact_form.cleaned_data.POST['Jenis_Kelamin'],
+                # Email = contact_form.cleaned_data.POST['Email'],
+                # Alamat = contact_form.cleaned_data.POST['Alamat'],
                 # Agree = request.POST['Agree'],
                 # Kode_Pos = request.POST['Kode_Pos'],
                 # Kota = request.POST['Kota'],
                 # Provinsi = request.POST['Provinsi'],
+                
+                # Cara dua melakukan save
+                # contact_form.save()
+                
+                # Cara tiga melakukan save
+                NamaLengkap = request.POST.get('NamaLengkap'),
+                # tanggal_lahir = request.POST['tanggal_lahir'],
+                Jenis_Kelamin = request.POST.get('Jenis_Kelamin'),
+                Email = request.POST.get('Email'),
+                Alamat = request.POST.get('Alamat'),
             )
             return HttpResponseRedirect('/contact/')
         else:

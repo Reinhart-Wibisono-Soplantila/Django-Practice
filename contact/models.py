@@ -1,19 +1,28 @@
 from django.db import models
+from django.core.exceptions import ValidationError
 
-gender = (
-    ("P", 'Pria'),
-    ('W', 'Wanita'),
-)
+# def validate_NamaLengkap(value):
+#     NamaLengkap_input = value
+#     if NamaLengkap_input == 'Einstein':
+#         message = "maaf," + NamaLengkap_input + "Tidak bisa di posting"
+#         raise ValidationError(message)
 
 # Create your models here.
 class contactModel(models.Model):
     NamaLengkap=models.CharField(
         max_length=20,
+        # validators=[validate_NamaLengkap]
         )
     
+    
+    gender = (
+        ("P", 'Pria'),
+        ('W', 'Wanita'),
+    )
     Jenis_Kelamin = models.CharField(
         max_length=1,
-        choices=gender
+        choices=gender,
+        default='P'
     )
     
     # tanggal_lahir = models.DateField()

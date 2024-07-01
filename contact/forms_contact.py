@@ -80,15 +80,24 @@ from django import forms
 from .models import contactModel
 
 class ContactForms (forms.ModelForm):
-    
-    # gender = (
-    #     ("P", 'Pria'),
-    #     ('W', 'Wanita'),
-    # )
-    # Jenis_Kelamin = forms.MultipleChoiceField(
-    #     label = 'Jenis Kelamin',
-    #     choices=gender 
-    # )
+    # labels = {
+    #         'FullName' : 'Nama Lengkap',
+    #         'VehicleNumber' : 'Nomor Kendaraan'
+    # }
+    # widgets = {
+    #     'FullName': forms.TextInput(
+    #         attrs = {
+    #             'class' : 'form-control',
+    #             'placeholder' : "Masukkan Nama Driver"
+    #         }
+    #     ),
+    #     'VehicleNumber' : forms.TextInput(
+    #         attrs = {
+    #             'class' : 'form-control',
+    #             'placeholder' : "Masukkan Nomor Plat Kendaraan"
+    #         }
+    #     ),
+    # }
     class Meta:
         model = contactModel
         fields = [
@@ -97,3 +106,18 @@ class ContactForms (forms.ModelForm):
             'Email',
             'Alamat',
         ]
+        
+        labels = {
+            'NamaLengkap' : 'Nama Lengkap',
+            'Jenis_Kelamin' : 'Jenis Kelamin',
+            'Email' : 'Email',
+            'Alamat' : 'Alamat'
+        }
+            
+        Gender_Choices = (
+            ("P", 'Pria'),
+            ('W', 'Wanita'),
+        )
+        Jenis_Kelamin = forms.MultipleChoiceField(
+            choices=Gender_Choices 
+        )

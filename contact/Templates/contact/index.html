@@ -5,15 +5,41 @@
 <div class="modal position-static d-block" tabindex="-1">
     <div class="modal-dialog w-75 mw-100">
         <div class="modal-content">
-            <div class="modal-header">
+            <div class="modal-header ">
                 <h5 class="modal-title">List Data</h5>
-                <h5><a href="{% url "contact:create" %}">Create</a></h5>
+                <a class="btn btn-primary"href="{% url "contact:create" %}">Create</a>
                 <!-- <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button> -->
             </div>
             <div class="modal-body">
                 <!-- class form -->
                  <!-- LIST data -->
-                  {% for post_data in post  %}
+                  <table class="table">
+                    <thead>
+                        <tr>
+                            <th scope="col">id</th>
+                            <th scope="col">nama</th>
+                            <th scope="col">Jenis Kelamin</th>
+                            <th scope="col">Email</th>
+                            <th scope="col">Alamat</th>
+                            <th>action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for post_data in post %}
+                        <tr>
+                            <th scope="row">{{forloop.counter}}</th>
+                            <td>{{post_data.NamaLengkap}}</td>
+                            <td>{{post_data.Jenis_Kelamin}}</td>
+                            <td>{{post_data.Email}}</td>
+                            <td>{{post_data.Alamat}}</td>
+                            <td>
+                                <a class="btn btn-warning" href="{% url 'contact:delete' post_data.id %}">Delete</a>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                  </table>
+                  <!-- {% for post_data in post  %}
                     <p>{{post_data.id}}</p>
                     <p>{{post_data.NamaLengkap}}</p>
                     <p>{{post_data.Jenis_Kelamin}}</p>
@@ -26,7 +52,7 @@
                     <br>
                     <hr>
                     <br>
-                  {% endfor %}
+                  {% endfor %} -->
             </div>
             
         </div>

@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 # from django import forms
 from django.http import HttpResponseRedirect
 
@@ -23,33 +23,38 @@ def index(request):
     # Derbugging
     return render(request, 'contact/index.html', context)
 
+def delete(request, delete_id):
+    contactModel.objects.filter(id=delete_id).delete()
+    return redirect('contact:index')
+
 def create(request):
     contact_form = ContactForms(request.POST or None)
     error = None
     if request.method == 'POST':
         if contact_form.is_valid():
-            contactModel.objects.create(
-                # Cara satu melakukan save
-                # NamaLengkap = contact_form.cleaned_data.POST['NamaLengkap'],
-                # # tanggal_lahir = request.POST['tanggal_lahir'],
-                # Jenis_Kelamin = contact_form.cleaned_data.POST['Jenis_Kelamin'],
-                # Email = contact_form.cleaned_data.POST['Email'],
-                # Alamat = contact_form.cleaned_data.POST['Alamat'],
-                # Agree = request.POST['Agree'],
-                # Kode_Pos = request.POST['Kode_Pos'],
-                # Kota = request.POST['Kota'],
-                # Provinsi = request.POST['Provinsi'],
+            
+            # contactModel.objects.create(
+            #     # Cara satu melakukan save
+            #     # NamaLengkap = contact_form.cleaned_data.POST['NamaLengkap'],
+            #     # # tanggal_lahir = request.POST['tanggal_lahir'],
+            #     # Jenis_Kelamin = contact_form.cleaned_data.POST['Jenis_Kelamin'],
+            #     # Email = contact_form.cleaned_data.POST['Email'],
+            #     # Alamat = contact_form.cleaned_data.POST['Alamat'],
+            #     # Agree = request.POST['Agree'],
+            #     # Kode_Pos = request.POST['Kode_Pos'],
+            #     # Kota = request.POST['Kota'],
+            #     # Provinsi = request.POST['Provinsi'],
                 
-                # Cara dua melakukan save
-                # contact_form.save()
-                
-                # Cara tiga melakukan save
-                NamaLengkap = request.POST.get('NamaLengkap'),
-                # tanggal_lahir = request.POST['tanggal_lahir'],
-                Jenis_Kelamin = request.POST.get('Jenis_Kelamin'),
-                Email = request.POST.get('Email'),
-                Alamat = request.POST.get('Alamat'),
-            )
+            #     # Cara dua melakukan save
+            #     NamaLengkap = request.POST.get('NamaLengkap'),
+            #     # tanggal_lahir = request.POST['tanggal_lahir'],
+            #     Jenis_Kelamin = request.POST.get('Jenis_Kelamin'),
+            #     Email = request.POST.get('Email'),
+            #     Alamat = request.POST.get('Alamat'),
+            # )
+            
+            # Cara dua melakukan save
+            contact_form.save()
             return HttpResponseRedirect('/contact/')
         else:
             error = contact_form.errors
